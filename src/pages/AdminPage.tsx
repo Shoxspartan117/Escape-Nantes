@@ -13,7 +13,7 @@ interface AdminPageProps {
 }
 
 // Protection côté client uniquement (MVP) : à remplacer par une authentification serveur avec l'API REST.
-const ADMIN_PASSWORD = (import.meta.env.VITE_ADMIN_PASSWORD as string | undefined) ?? 'nantes44';
+const ADMIN_PASSWORD = (import.meta.env.VITE_ADMIN_PASSWORD as string | undefined) || 'nantes44';
 const SESSION_KEY = 'nantes-ops:admin-unlocked';
 
 interface FormState {

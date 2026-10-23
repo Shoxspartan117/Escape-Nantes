@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # NANTES OPS — Terminal tactique (escape game géolocalisé)
 
 React + TypeScript + Vite + TailwindCSS + Leaflet/OpenStreetMap, PWA installable.
@@ -43,3 +44,7 @@ Le workflow configure le préfixe d'URL du dépôt pour Vite. Si vous souhaitez 
 - `scripts/generate-icons.py` : régénère les icônes PNG.
 
 Les coordonnées des POI de démonstration sont approximatives ; ajustez-les via l'administration.
+=======
+# Escape-Nantes
+Radar pour Escape Game Amateur à Nantes
+>>>>>>> 88834bef57f3611a576cdfe791073ba35c3f397a
