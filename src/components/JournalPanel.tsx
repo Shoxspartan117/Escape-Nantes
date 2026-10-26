@@ -21,6 +21,8 @@ function formatDuration(ms: number): string {
 
 /** Historique des énigmes découvertes, progression et statistiques de partie. */
 export default function JournalPanel({ pois, discovered, stats, simulating, onSelect, onSimulate, onReset, onClose }: JournalPanelProps) {
+  // Simulation réservée à l'administrateur (session déverrouillée via l'écran ADMIN)
+  const isAdmin = sessionStorage.getItem('nantes-ops:admin-unlocked') === '1';
   const byId = new Map(pois.map((p) => [p.id, p]));
   const entries = discovered.filter((d) => byId.has(d.poiId)).sort((a, b) => b.at - a.at);
   const pct = pois.length ? Math.round((entries.length / pois.length) * 100) : 0;
@@ -66,15 +68,17 @@ export default function JournalPanel({ pois, discovered, stats, simulating, onSe
           </ul>
         </section>
 
-        <section className="space-y-1">
-          <div className="tracking-widest text-neon/70">MODE SIMULATION (tests hors Nantes)</div>
-          <div className="flex flex-wrap gap-1">
-            {pois.map((p) => (
-              <button key={p.id} className="btn-neon !px-2 !py-1 !text-[10px]" onClick={() => onSimulate(p)}>{p.name.slice(0, 14)}</button>
-            ))}
-          </div>
-          {simulating && <button className="btn-neon w-full !border-signal !text-signal" onClick={() => onSimulate(null)}>RETOUR AU GPS RÉEL</button>}
-        </section>
+        {(isAdmin || simulating) && (
+          <section className="space-y-1">
+            <div className="tracking-widest text-neon/70">MODE SIMULATION (tests hors Nantes)</div>
+            <div className="flex flex-wrap gap-1">
+              {pois.map((p) => (
+                <button key={p.id} className="btn-neon !px-2 !py-1 !text-[10px]" onClick={() => onSimulate(p)}>{p.name.slice(0, 14)}</button>
+              ))}
+            </div>
+            {simulating && <button className="btn-neon w-full !border-signal !text-signal" onClick={() => onSimulate(null)}>RETOUR AU GPS RÉEL</button>}
+          </section>
+        )}
 
         <button
           className="btn-neon w-full !border-alert !text-alert"

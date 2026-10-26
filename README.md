@@ -32,9 +32,10 @@ Le workflow configure le préfixe d'URL du dépôt pour Vite. Si vous souhaitez 
 - POI invisibles tant que `distance > activationRadius` (Haversine, [calculateDistance.ts](src/utils/calculateDistance.ts)) ; à l'apparition : animation, vibration, son, bandeau « SIGNAL DETECTÉ ».
 - Panneau « CIBLE IDENTIFIÉE », radar animé, mode AR caméra, journal des énigmes, progression, statistiques, notifications locales, détection entrée/sortie de zone.
 - Audio persistant (drone synthétique intégré + pistes MP3/OGG/AAC/flux ajoutables par URL).
+- Son par POI : déposez un fichier dans `public/audio/` et renseignez le champ **Son** du POI (`/audio/fichier.mp3`) ; il joue en boucle tant que la fiche du POI est ouverte (l'ambiance est mise en pause puis reprise).
 - Administration (bouton ADMIN ou `/#admin`) : CRUD des POI, import/export JSON, aperçu carte (toucher la carte pour placer un POI).
   Mot de passe par défaut : `nantes44` — à changer via `VITE_ADMIN_PASSWORD` (fichier `.env.local`). Protection côté client uniquement (MVP).
-- **Mode simulation** (Journal → « MODE SIMULATION ») pour tester les POI sans être à Nantes.
+- **Mode simulation** (Journal → « MODE SIMULATION », visible uniquement après déverrouillage de l'administration) pour tester les POI sans être à Nantes.
 
 ## Architecture
 

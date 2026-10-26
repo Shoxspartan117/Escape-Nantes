@@ -28,6 +28,7 @@ export function parsePoi(raw: unknown, index: number): PointOfInterest {
     longitude,
     riddle: typeof o.riddle === 'string' ? o.riddle : '',
     icon: typeof o.icon === 'string' && o.icon ? o.icon : DEMO_IMAGE,
+    ...(typeof o.audio === 'string' && o.audio.trim() ? { audio: o.audio.trim() } : {}),
     activationRadius: radius,
   };
 }

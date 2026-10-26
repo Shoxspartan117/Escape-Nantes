@@ -1,6 +1,8 @@
+import { useEffect, useRef } from 'react';
 import type { PointOfInterest } from '../types/PointOfInterest';
 import { formatCoord, formatDistance } from '../utils/calculateDistance';
 import { asset } from '../utils/asset';
+import { useAudio } from './AudioManager';
 
 interface PoiPopupProps {
   poi: PointOfInterest;
@@ -8,8 +10,33 @@ interface PoiPopupProps {
   onClose: () => void;
 }
 
+/** Joue le son du POI en boucle tant que la fiche est ouverte ; l'ambiance est mise en pause puis reprise. */
+function usePoiSound(audioPath: string | undefined) {
+  const { playing, play, pause } = useAudio();
+  const playingRef = useRef(playing);
+  playingRef.current = playing;
+
+  useEffect(() => {
+    if (!audioPath) return;
+    const resumeAmbient = playingRef.current;
+    const el = new Audio(asset(audioPath));
+    el.loop = true;
+    if (resumeAmbient) pause();
+    void el.play().catch(() => {
+      if (resumeAmbient) play();
+    });
+    return () => {
+      el.pause();
+      el.removeAttribute('src');
+      el.load();
+      if (resumeAmbient) play();
+    };
+  }, [audioPath, play, pause]);
+}
+
 /** Panneau de renseignement ouvert au clic sur un POI. */
 export default function PoiPopup({ poi, distance, onClose }: PoiPopupProps) {
+  usePoiSound(poi.audio);
   return (
     <div className="absolute inset-0 z-[1100] flex items-end bg-black/60 p-2 pb-[calc(72px+env(safe-area-inset-bottom))]" onClick={onClose}>
       <div className="sheet-enter panel max-h-[80vh] w-full overflow-y-auto" onClick={(e) => e.stopPropagation()}>

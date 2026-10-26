@@ -23,6 +23,7 @@ interface FormState {
   longitude: string;
   riddle: string;
   icon: string;
+  audio: string;
   activationRadius: string;
 }
 
@@ -33,6 +34,7 @@ const emptyForm = (): FormState => ({
   longitude: '',
   riddle: '',
   icon: DEMO_IMAGE,
+  audio: '',
   activationRadius: String(DEFAULT_ACTIVATION_RADIUS),
 });
 
@@ -104,6 +106,7 @@ export default function AdminPage({ pois, onChange, onExit }: AdminPageProps) {
       longitude,
       riddle: form.riddle.trim(),
       icon: form.icon.trim() || DEMO_IMAGE,
+      ...(form.audio.trim() ? { audio: form.audio.trim() } : {}),
       activationRadius: radius,
     };
     onChange(await poiService.save(poi));
@@ -119,6 +122,7 @@ export default function AdminPage({ pois, onChange, onExit }: AdminPageProps) {
       longitude: String(p.longitude),
       riddle: p.riddle,
       icon: p.icon,
+      audio: p.audio ?? '',
       activationRadius: String(p.activationRadius),
     });
 
@@ -163,6 +167,7 @@ export default function AdminPage({ pois, onChange, onExit }: AdminPageProps) {
       longitude: lon,
       riddle: form.riddle,
       icon: form.icon || DEMO_IMAGE,
+      audio: form.audio.trim() || undefined,
       activationRadius: Number(form.activationRadius) || DEFAULT_ACTIVATION_RADIUS,
     };
     return [...pois.filter((p) => p.id !== draft.id), draft];
@@ -203,6 +208,7 @@ export default function AdminPage({ pois, onChange, onExit }: AdminPageProps) {
           </div>
           <textarea className="field" rows={3} placeholder="Énigme" value={form.riddle} onChange={(e) => set('riddle', e.target.value)} />
           <input className="field" placeholder="Image (URL ou /icons/…)" value={form.icon} onChange={(e) => set('icon', e.target.value)} />
+          <input className="field" placeholder="Son (ex. /audio/chateau.mp3, optionnel)" value={form.audio} onChange={(e) => set('audio', e.target.value)} />
           <label className="flex items-center gap-2">
             <span className="whitespace-nowrap">RAYON (m)</span>
             <input className="field" inputMode="numeric" value={form.activationRadius} onChange={(e) => set('activationRadius', e.target.value)} />

@@ -10,6 +10,8 @@ export interface PointOfInterest {
   riddle: string;
   /** URL de l'image / icône du POI. */
   icon: string;
+  /** Son joué en boucle tant que le POI est sélectionné (ex. "/audio/chateau.mp3"). */
+  audio?: string;
   /** Distance (en mètres) en dessous de laquelle le POI devient visible. */
   activationRadius: number;
 }

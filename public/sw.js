@@ -37,7 +37,7 @@ async function appStrategy(request) {
   const cache = await caches.open(STATIC_CACHE);
   try {
     const res = await fetch(request);
-    if (res.ok) cache.put(request, res.clone());
+    if (res.ok && res.status === 200) cache.put(request, res.clone());
     return res;
   } catch (err) {
     const cached = await cache.match(request);
