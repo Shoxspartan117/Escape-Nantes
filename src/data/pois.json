@@ -23,7 +23,7 @@
     "name": "Porte Sauvetout",
     "latitude": 47.216775817441835,
     "longitude": -1.5578748707899726,
-    "riddle": "Je suis un géant mécanique observé par tous. Je marche, je souffle de l'eau, et des passagers montent sur mon dos.",
+  "riddle": "Aux pieds de la tour à plomb de Nantes",
     "icon": "/icons/target.svg",
     "activationRadius": 50
   },
@@ -32,7 +32,7 @@
     "name": "Porte Saint-Pierre",
     "latitude": 47.21889351476121,
     "longitude": -1.5503070632825027,
-    "riddle": "Biscuit je fus, culture je suis devenue. Mon belvédère domine la ville : combien de petits-beurre dans ma tour ?",
+    "riddle": "Là où résonne l’ouvrage des bâtisseurs, cherche le portail ; au-delà viendra le refuge, puis la muraille oubliée des anciens. Je perçus au pieds de cette muraille les premières perturbation du temps",
     "icon": "/icons/target.svg",
     "activationRadius": 50
   },
@@ -41,7 +41,7 @@
     "name": "Tour du murier",
     "latitude": 47.217942875174984,
     "longitude": -1.5493942158030336,
-    "riddle": "Un magnolia centenaire et des serres tropicales gardent mon secret : l'élégance d'un jardin face à la gare.",
+    "riddle": "Quand la fonte ne suffit plus à retenir celles qui rêvent de liberté",
     "icon": "/icons/target.svg",
     "activationRadius": 50
   },
@@ -50,8 +50,9 @@
     "name": "Tour du Moulin Harnois",
     "latitude": 47.219811777674906,
     "longitude": -1.5545076035940548,
-    "riddle": "Description",
+    "riddle": "SEAL",
     "icon": "/icons/target.svg",
+    "audio": "/audio/Communeau.mp3",
     "activationRadius": 50
   },
   {
@@ -59,7 +60,7 @@
     "name": "Chapelle du Bouffay",
     "latitude": 47.215342,
     "longitude": -1.55423,
-    "riddle": "Une anomalie spatio-temporelle c’est glissé dans le jardin d’éden.",
+    "riddle": "Une anomalie spatio-temporelle c’est glissé dans le jardin d’Eden.",
     "icon": "/icons/target.svg",
     "activationRadius": 50
   },
