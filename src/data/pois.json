@@ -6,7 +6,7 @@
     "longitude": -1.549358,
     "riddle": ". -.-. --- ..- - . --..",
     "icon": "/icons/target.svg",
-    "audio": "/public/audio/chateau.wav",
+    "audio": "/audio/Chateau.wav",
     "activationRadius": 50
   },
   {
